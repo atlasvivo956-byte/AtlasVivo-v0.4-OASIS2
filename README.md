@@ -1,98 +1,88 @@
-Atlas Vivo v0.4 – OASIS-2
+# Atlas Vivo v0.5.2 – Balanced Early Cognitive Impairment Assessment
 
-Overview
+## Overview
 
 Atlas Vivo is an open scientific research project focused on reproducible machine learning methods for Alzheimer's disease research using public datasets.
 
-This repository contains the frozen v0.4 pipeline developed and internally validated using the OASIS-2 Longitudinal dataset.
-
-The objective of this project is to build a transparent, reproducible and incrementally validated research pipeline.
+Current stable release: **v0.5.2**
 
 ---
 
-Current Status
+## Current Status
 
-Project status: Frozen (v0.4)
-
-Version frozen on: 2026-06-25
-
-Development strategy:
-
-- v0.1 — Synthetic prototype
-- v0.2 — First validation with OASIS-2
-- v0.3 — Addition of Clinical Dementia Rating (CDR)
-- v0.4 — Addition of normalized Whole Brain Volume (nWBV)
-
-Each version introduces only one methodological modification to preserve reproducibility.
+- Latest version: **v0.5.2**
+- Status: Frozen Release
+- Dataset: OASIS-2 Longitudinal
 
 ---
 
-Dataset
+## Model
 
-This project uses the OASIS-2 Longitudinal public dataset under its official Data Use Agreement.
+Classifier:
+- Logistic Regression (class_weight="balanced")
 
-The dataset was used exclusively for academic research.
+Features:
+- Age
+- EDUC
+- MMSE
+- nWBV
+- eTIV
 
----
-
-Internal Validation Results
-
-Main results obtained for the frozen v0.4 pipeline:
-
-- Mean ROC-AUC (10 random seeds): 0.9970 ± 0.0073
-- Cross-validation demonstrated high reproducibility.
-- The model remained stable across multiple random initializations.
-
-These results correspond to internal validation only.
+Task:
+- CN (CDR=0) vs MCI (CDR=0.5)
 
 ---
 
-Methodological Principles
+## Performance (v0.5.2)
 
-The Atlas Vivo project follows four development principles:
+- ROC-AUC: **0.8650 ± 0.0035**
+- Sensitivity: **71.1%**
+- Specificity: **83.8%**
 
-1. One methodological change per version.
-2. Full reproducibility.
-3. Transparent validation.
-4. Version freezing before introducing new variables.
+Validation:
+- Nested 5-fold Cross Validation
+- 10 random seeds
 
----
-
-Repository Contents
-
-- Source notebooks
-- Frozen validation pipeline
-- Figures
-- Documentation
-- Model files
+Research use only.
 
 ---
 
-Limitations
+## Reproducibility
 
-The current model has been evaluated only through internal validation using the OASIS-2 dataset.
+Notebook:
+- AtlasVivo_v0_5_EarlyCI.ipynb
 
-These results do not constitute external validation and must not be interpreted as clinical diagnostic performance.
-
-Independent validation using additional public datasets is planned for future versions.
-
----
-
-Future Work
-
-- External validation
-- Comparison with additional public datasets
-- Model interpretability analyses
-- Scientific manuscript preparation
+Repository contains:
+- notebook
+- frozen model (.pkl)
+- requirements.txt
+- README
+- License
 
 ---
 
-License
+## DOI
 
-MIT License.
+Latest Version DOI
+
+**10.5281/zenodo.20945738**
+
+Concept DOI (all versions)
+
+**10.5281/zenodo.20945737**
 
 ---
 
-Citation
+## Limitations
 
-Citation information and DOI will be added after the first public release.
+This model has been internally validated only using the OASIS-2 dataset.
+
+It is not intended for clinical diagnosis.
+
+External validation is planned for future versions.
+
+---
+
+## License
+
+MIT License
